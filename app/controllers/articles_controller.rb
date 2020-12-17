@@ -9,4 +9,12 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  def new
+  end
+
+  def create
+    #Below I am rendering the params to the browser so I can see what I am working with - 'article' is the key for the entire params
+    render plain: params[:article]
+  end
+
 end
