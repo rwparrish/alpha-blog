@@ -13,8 +13,10 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    #Below I am rendering the params to the browser so I can see what I am working with - 'article' is the key for the entire params
-    render plain: params[:article]
+    @article = Article.new(params.require(:article).permit(:title, :description))
+    @article.save
+    # redirect_to article_path(@article) - the code below is a shortcut for this
+    redirect_to @article 
   end
 
 end
