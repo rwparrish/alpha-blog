@@ -1,12 +1,14 @@
 class ArticlesController < ApplicationController
 
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
   def index
     @articles = Article.all
   end
 
   def show
     # byebug - built in Ruby debugger used to freeze the program so data can be expossed where it is placed
-    @article = Article.find(params[:id])
+    # @article = Article.find(params[:id])
   end
 
   def new
@@ -14,7 +16,6 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-    @article = Article.find(params[:id])
   end
 
   def create
@@ -28,7 +29,6 @@ class ArticlesController < ApplicationController
   end
 
   def update 
-    @article = Article.find(params[:id])
     if @article.update(params.require(:article).permit(:title, :description))
       flash[:notice] = "This article was updated successfully"
       redirect_to @article
@@ -38,9 +38,14 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     redirect_to articles_path
+  end
+
+  private
+
+  def set_article
+    @article = Article.find(params[:id])
   end
 
 end
