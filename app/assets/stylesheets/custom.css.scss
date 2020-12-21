@@ -16,3 +16,29 @@
   letter-spacing: -1px;
   font-weight: bold;
 }
+
+#home-container {
+  margin-top: 25px;
+}
+
+.jumbotron {
+  background-image: asset-url('jumbo-copy.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 570px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
+}
+
+#sticky-footer {
+  background-color: #6d757d !important;
+  flex-shrink: none;
+}
