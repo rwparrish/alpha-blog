@@ -20,6 +20,9 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    # hard coding a user to a newly created article to avoid error message until user authentication is working
+    # this will work as long as there are valid users in the dev databe 'users' table
+    @article.user = User.first
     if @article.save
       flash[:notice] = "This article was saved successfully"
       redirect_to @article
